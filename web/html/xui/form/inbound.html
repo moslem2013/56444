@@ -14,25 +14,25 @@
     </a-form-item>
     <a-form-item>
         <span slot="label">
-            监听 IP
+            monitor IP
             <a-tooltip>
                 <template slot="title">
-                    默认留空即可
+                    Just leave the blank by default
                 </template>
                 <a-icon type="question-circle" theme="filled"></a-icon>
             </a-tooltip>
         </span>
         <a-input v-model.trim="inbound.listen"></a-input>
     </a-form-item>
-    <a-form-item label="端口">
+    <a-form-item label="port">
         <a-input type="number" v-model.number="inbound.port"></a-input>
     </a-form-item>
     <a-form-item>
         <span slot="label">
-            总流量(GB)
+            Total traffic(GB)
             <a-tooltip>
                 <template slot="title">
-                    0 表示不限制
+                    0 Expressing unlimited
                 </template>
                 <a-icon type="question-circle" theme="filled"></a-icon>
             </a-tooltip>
@@ -41,10 +41,10 @@
     </a-form-item>
     <a-form-item>
         <span slot="label">
-            到期时间
+            Expire date
             <a-tooltip>
                 <template slot="title">
-                    留空则永不到期
+                    Leave empty but never expire
                 </template>
                 <a-icon type="question-circle" theme="filled"></a-icon>
             </a-tooltip>
@@ -72,6 +72,11 @@
 <!-- shadowsocks -->
 <template v-if="inbound.protocol === Protocols.SHADOWSOCKS">
     {{template "form/shadowsocks"}}
+</template>
+
+<!-- MTPROTO-door -->
+<template v-if="inbound.protocol === Protocols.MTPROTO">
+    {{template "form/MTPROTO"}}
 </template>
 
 <!-- dokodemo-door -->
